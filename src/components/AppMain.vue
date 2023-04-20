@@ -15,7 +15,6 @@ export default {
 </script>
 
 <template>
-    <main class="container">Io sono Main</main>
     <div class="container movies">
         <ul class="row row-cols-5 g-3">
             <li class="col" v-for="(movie) in store.movies" :key="movie.id">
