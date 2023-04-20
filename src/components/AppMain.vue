@@ -35,6 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+    background-color: rgba($color: grey, $alpha: .2);
     .col {
         height: 350px
     }

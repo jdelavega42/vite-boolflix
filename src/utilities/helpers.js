@@ -5,6 +5,8 @@ function getMovies() {
     const params = store.params;
     axios.get(store.moviesAPI, { params }).then((resp) => {
       store.movies = resp.data.results
+    }).catch(error=>{
+      console.log(error);
     })
   };
 
@@ -12,6 +14,8 @@ function getSeries() {
     const params = store.params;
     axios.get(store.seriesAPI, { params }).then((resp) => {
       store.series = resp.data.results
+    }).catch(error=>{
+      console.log(error);
     })
   };
 

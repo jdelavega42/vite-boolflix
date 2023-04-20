@@ -1,7 +1,17 @@
 <script>
-import "/node_modules/flag-icons/css/flag-icons.min.css";
+import LangFlag from 'vue-lang-code-flags';
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { faStar } from '@fortawesome/free-solid-svg-icons'
+// import { faStarHalf } from '@fortawesome/free-solid-svg-icons'
+// library.add(faStar)
+// library.add(faStarHalf)
+
 export default {
     name:"AppCard",
+    components: {
+        LangFlag,
+    },
     props: {
         obj: Object
     },
@@ -10,7 +20,7 @@ export default {
             if(!this.obj.title) {
                 return this.obj.name
             } else {
-                this.obj.title
+                return this.obj.title
             }
             
         },
@@ -27,20 +37,11 @@ export default {
                 return path
             }
         },
-        getUS(){
-            if(this.obj.original_language === "en") {
-                return "gb"
-            } else if  (this.obj.original_language === "ja"){
-                return "jp"
-            } else {
-                return this.obj.original_language
-            }
-        },
         getStars(){
             return parseInt(this.obj.vote_average) / 2 
         }
     }
-
+    
 }
 </script>
 
@@ -48,20 +49,26 @@ export default {
     <div class="ms_container">
         <div class="ms_front">
             <img :src="getImage" alt="">
-            <h2 v-if="!obj.poster_path">Immagine non disponibile</h2>
+            <div  v-if="!obj.poster_path" class="unavailable">
+                <h2>Immagine non disponibile</h2>
+                <h2>{{ getTitle }}</h2>
+            </div>
         </div>
         <div class="ms_back">
             <h2>{{ getTitle }}</h2>
             <h3>{{ getOT }}</h3>
             <p v-if="!obj.original_language">Lingua non disponibile</p>
-            <p v-else>Lingua: <span :class="`fi fi-${getUS} fis`"></span>{{ obj.original_language }}</p>
-            <p>{{ getStars }}</p>
+            <p v-else> <span> Lingua:</span> <lang-flag :iso="`${ obj.original_language }`" /></p>
+            <p> {{ getStars }}/></p>
+            <font-awesome-icon icon="fa-solid fa-star" />
+            <font-awesome-icon icon="fa-solid fa-star-half" />
         </div>
     </div>
-
+    
 </template>
 
 <style lang="scss" scoped>
+@use "../styles/general.scss";
 .ms_container {
     position: relative;
     height: 100%;
