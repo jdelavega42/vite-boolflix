@@ -57,8 +57,10 @@ export default {
         <div class="ms_back">
             <h2>{{ getTitle }}</h2>
             <h3>{{ getOT }}</h3>
-            <p v-if="!obj.original_language">Lingua non disponibile</p>
-            <p v-else> <span> Lingua:</span> <lang-flag :iso="`${ obj.original_language }`" /></p>
+            <p> <span>Lingua:</span>
+                <lang-flag :iso="`${ obj.original_language }`" />
+                <lang-flag :iso="`${ obj.original_language }`" />
+            </p>
             <i  v-for="num in getStars" class="fa-solid fa-star"></i>
             <i v-if="getStars < 5" v-for="num in 5 - getStars" class="fa-regular fa-star"></i>
         </div>
