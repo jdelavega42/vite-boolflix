@@ -19,10 +19,21 @@ export default{
 </script>
 
 <template>
-  <AppHeader @search="this.handleInput()"/>
-  <AppMain />
+  <div class="body">
+    <AppHeader @search="this.handleInput()"/>
+    <AppMain />
+  </div>
 </template>
 
 <style lang="scss">
 @use "./styles/general.scss";
+@use "./styles/partials/variables" as *;
+
+  .body {
+    background-color: $primaryBg;
+    color: white;
+    height: 100vh;
+    width: 100%;
+  }
+
 </style>
