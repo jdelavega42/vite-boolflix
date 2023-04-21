@@ -58,15 +58,15 @@ export default {
             <img v-else :src="getImage" alt="">
         </div>
         <div class="ms_back">
-            <div class="title">
+            <div class="ms_top">
                 <h2>{{ getTitle }}</h2>
                 <h3 v-if="getTitle !== getOT">{{ getOT }}</h3>
             </div>
             <div class="bottom">
                 <p v-if="!IsoFlag.hasOwnProperty(obj.original_language)">lingua non disponibile</p>
                 <p v-else> <span>Lingua: </span><lang-flag :iso="`${ obj.original_language }`" /></p>
-                <i  v-for="num in getStars" class="fa-solid fa-star"></i>
-                <i v-for="num in 5 - getStars" class="fa-regular fa-star"></i>
+                <i  v-for="num in 5" class=" fa-star" :class="num <= getStars ? 'fa-solid' : 'fa-regular' "></i>
+                <button class="ms_btn">More Info</button>
             </div>
         </div>
     </div>
@@ -104,20 +104,33 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-content: flex-start;
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba($secondaryBg, .75);
+    background-color: rgba($secondaryBg, .9);
     opacity: 0;
     transition: 250ms;
     &:hover {
         opacity: 1;
     }
     h2 {
-        font-size: 1.5rem;
+        font-size: 1rem;
+        font-weight: bold
     };
     h3 {
-        font-size: 1.25rem;    
+        font-size: .75rem;
+        font-weight: bold;    
+    }
+    .ms_btn {
+        background-color: rgba($secondaryColor, .75);
+        border: none;
+        border-radius: .5rem;
+        &:hover {
+            background-color: rgba($primaryBg, .75);
+            color: $secondaryColor;
+            transition: 250ms;
+        }
     }
     };
 
