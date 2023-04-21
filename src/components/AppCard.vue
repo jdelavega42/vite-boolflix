@@ -53,7 +53,7 @@ export default {
         <div class="ms_front">
             <div  v-if="!obj.poster_path" class="unavailable">
                 <h2>{{ getTitle }}</h2>
-                <p>Immagine non disponibile</p>
+                <p>Image non available</p>
             </div>
             <img v-else :src="getImage" alt="">
         </div>
@@ -63,8 +63,8 @@ export default {
                 <h3 v-if="getTitle !== getOT">{{ getOT }}</h3>
             </div>
             <div class="bottom">
-                <p v-if="!IsoFlag.hasOwnProperty(obj.original_language)">lingua non disponibile</p>
-                <p v-else> <span>Lingua: </span><lang-flag :iso="`${ obj.original_language }`" /></p>
+                <p v-if="!IsoFlag.hasOwnProperty(obj.original_language)">Language not available</p>
+                <p v-else> <span>Language: </span><lang-flag :iso="`${ obj.original_language }`" /></p>
                 <i  v-for="num in 5" class=" fa-star" :class="num <= getStars ? 'fa-solid' : 'fa-regular' "></i>
                 <button class="ms_btn">More Info</button>
             </div>

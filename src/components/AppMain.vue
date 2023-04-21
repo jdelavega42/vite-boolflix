@@ -16,16 +16,16 @@ export default {
 
 <template>
     <div v-if="store.movies.length === 0 & store.series.length === 0">
-        <div class="container text-center">
+        <div class="container">
             <h2>Watch movies and TV shows</h2>
-            <p>With Amazon Prime, watch popular movies and TV shows, including Amazon Originals Tom Clancy's: Jack Ryan, The Bad Guy and LoL Season 2. Also, take advantage of unlimited 1-day shipping on 2 million products at no extra cost and 2-3 day shipping on millions more.</p>
-            <h2>Amazon brings you the UEFA Champions League</h2>
-            <p>Sign up today and watch live the top pick of Champions League on Wednesday exclusively on Prime Video, and highlights of all matches.</p>
+            <p>With <span class="prime">Prime</span>Boolean, watch popular movies and TV shows, including Boolean Originals Tom Clancy's: Jack Ryan, The Bad Guy and LoL Season 2. Also, take advantage of unlimited 1-day shipping on 2 million products at no extra cost and 2-3 day shipping on millions more.</p>
+            <h2><span class="prime">Prime</span>Boolean brings you the UEFA Champions League</h2>
+            <p>Sign up today and watch live the top pick of Champions League on Wednesday exclusively on <span class="prime">Prime</span>Boolean, and highlights of all matches.</p>
             <h2>Your favorite channels all in one place</h2>
-            <p>With Prime Video Channels, members can subscribe to premium and specialty channels with no long-term commitments and no additional apps to download. Each subscription starts with a free trial, and you can cancel anytime.</p>
-            <h2 class="my-5">Prime Video Store</h2>
+            <p>With <span class="prime">Prime</span>Boolean Channels, members can subscribe to premium and specialty channels with no long-term commitments and no additional apps to download. Each subscription starts with a free trial, and you can cancel anytime.</p>
+            <h2 class="mt-5"><span class="prime">Prime</span>Boolean Store</h2>
             <p>Even more movies, now available to rent or buy—no Prime membership required.</p>
-            <div class="btn btn-primary">premi qui</div>
+            <div class="btn btn-primary">Start Payment</div>
         </div>
     </div>
     <main v-else class="ms_main">
@@ -104,6 +104,9 @@ export default {
             }
         }
     }
+}
+.prime {
+    color: $primaryColor;
 }
 ::-webkit-scrollbar {
                     background: transparent;

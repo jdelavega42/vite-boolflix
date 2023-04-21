@@ -15,7 +15,7 @@ export default {
 <header class="ms_header d-flex align-items-center shadow-lg">
     <div class="container d-flex justify-content-between text-center align-items-center">    
         <div class="title d-flex align-items-center fs-1"><span class="text-primary">Prime</span>Boolean</div>
-        <input v-model.trim="store.params.query" @keyup.enter="$emit('search')" type="text" placeholder="Premi invio per la ricerca">
+        <input v-model.trim="store.params.query" @keyup.enter="$emit('search')" type="text" placeholder="Search">
     </div>
 </header>
 </template>
