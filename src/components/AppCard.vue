@@ -42,9 +42,13 @@ export default {
     },
     mounted() {
         this.IsoFlag.hasOwnProperty(this.obj.original_language)
-        console.log(this.IsoFlag.hasOwnProperty(this.obj.original_language));
+    },
+    methods: {
+        showInfo() {
+            this.obj.show = !this.obj.show;
+            console.log('press');
+        }
     }
-    
 }
 </script>
 
@@ -62,11 +66,14 @@ export default {
                 <h2>{{ getTitle }}</h2>
                 <h3 v-if="getTitle !== getOT">{{ getOT }}</h3>
             </div>
-            <div class="bottom">
+            <div class="ms_bottom">
                 <p v-if="!IsoFlag.hasOwnProperty(obj.original_language)">Language not available</p>
                 <p v-else> <span>Language: </span><lang-flag :iso="`${ obj.original_language }`" /></p>
-                <i  v-for="num in 5" class=" fa-star" :class="num <= getStars ? 'fa-solid' : 'fa-regular' "></i>
-                <button class="ms_btn">More Info</button>
+                <div class="rating">
+                    <i  v-for="num in 5" class=" fa-star" :class="num <= getStars ? 'fa-solid' : 'fa-regular' "></i>
+                </div>
+                <button  class="ms_btn" @click="showInfo" >More Info</button>
+                <p v-show="this.obj.show"> {{ obj.overview }}</p>
             </div>
         </div>
     </div>
@@ -98,40 +105,46 @@ export default {
         }
     }
     .ms_back {
-    padding: 1rem .5rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: flex-start;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba($secondaryBg, .9);
-    opacity: 0;
-    transition: 250ms;
-    &:hover {
-        opacity: 1;
-    }
-    h2 {
-        font-size: 1rem;
-        font-weight: bold
-    };
-    h3 {
-        font-size: .75rem;
-        font-weight: bold;    
-    }
-    .ms_btn {
-        background-color: rgba($secondaryColor, .75);
-        border: none;
-        border-radius: .5rem;
+        padding: 1rem .5rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: flex-start;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: rgba($secondaryBg, .9);
+        opacity: 0;
+        transition: 250ms;
+        overflow-y: auto;
         &:hover {
-            background-color: rgba($primaryBg, .75);
-            color: $secondaryColor;
-            transition: 250ms;
+            opacity: 1;
         }
-    }
+        h2 {
+            font-size: 1rem;
+            font-weight: bold
+        };
+        h3 {
+            font-size: .75rem;
+            font-weight: bold;    
+        }
+        .ms_bottom {
+            display: flex;
+            flex-direction: column;
+            .ms_btn {
+                background-color: rgba($secondaryColor, .75);
+                border: none;
+                border-radius: .5rem;
+                &:hover {
+                    background-color: rgba($primaryBg, .75);
+                    color: $secondaryColor;
+                    transition: 250ms;
+                }
+            }
+        };
+
     };
 
 }
